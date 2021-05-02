@@ -1,5 +1,7 @@
 package top.mumudm.sort.selectionSort;
 
+import top.mumudm.sort.util.SortUtil;
+
 /**
  * 选择排序
  * <p>
@@ -14,14 +16,11 @@ package top.mumudm.sort.selectionSort;
 public class SelectionSort {
 
     public static void main(String[] args) {
-        Person person1 = new Person("vhh", 18);
-        Person person2 = new Person("vh", 17);
-        Person person3 = new Person("v", 22);
-        Person[] data = {person1, person2, person3};
-        sort(data);
+        Integer[] array = SortUtil.generateArray(10000, 500);
+        SortUtil.sort(array);
     }
 
-    public static void sort(Comparable[] data) {
+    public static <E extends Comparable<E>> void sort(E[] data) {
         for (int i = 0; i < data.length; i++) {
             int minIndex = i;
             for (int j = i; j < data.length; j++) {
@@ -30,10 +29,6 @@ public class SelectionSort {
                 }
             }
             swap(data, i, minIndex);
-        }
-
-        for (int i = 0; i < data.length; i++) {
-            System.out.println(data[i]);
         }
     }
 
