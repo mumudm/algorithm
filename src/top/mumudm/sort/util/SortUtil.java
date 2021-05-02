@@ -37,10 +37,10 @@ public class SortUtil {
         System.out.printf("sorted: %s, size: %d,time: %d ms%n", sortedName, data.length, endTime - startTime);
     }
 
-    public <E extends Comparable<E>> boolean isSorted(E[] data) {
+    public static  <E extends Comparable<E>> boolean isSorted(E[] data) {
         for (int i = 1; i < data.length; i++) {
             if (data[i - 1].compareTo(data[i]) > 0) {
-                return false;
+                throw new RuntimeException("sorted failed");
             }
         }
         return true;
@@ -58,9 +58,9 @@ public class SortUtil {
 
     public static Person[] generatePersonArray(int size, int max) {
         Person[] data = new Person[size];
-        Random random = new Random(max);
+        Random random = new Random();
         for (int i = 0; i < data.length; i++) {
-            data[i] = new Person("a", random.nextInt());
+            data[i] = new Person("a", random.nextInt(max));
         }
         return data;
     }

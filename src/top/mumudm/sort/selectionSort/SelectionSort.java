@@ -16,7 +16,7 @@ import top.mumudm.sort.util.SortUtil;
 public class SelectionSort {
 
     public static void main(String[] args) {
-        Integer[] array = SortUtil.generateArray(10000, 500);
+        Integer[] array = SortUtil.generateArray(50000, 10000);
         SortUtil.sort(array);
     }
 
@@ -30,6 +30,7 @@ public class SelectionSort {
             }
             swap(data, i, minIndex);
         }
+        // System.out.println(Arrays.toString(data));
     }
 
     private static <T> void swap(T[] data, int i, int j) {
