@@ -34,10 +34,14 @@ public class SortUtil {
             e.printStackTrace();
         }
         long endTime = System.currentTimeMillis();
-        System.out.printf("sorted: %s, size: %d,time: %d ms%n", sortedName, data.length, endTime - startTime);
+        System.out.printf("sorted: %s, size: %d,time: %ss %n",
+                sortedName,
+                data.length,
+                (endTime - startTime) / 1000 + "." + (endTime - startTime) % 1000
+        );
     }
 
-    public static  <E extends Comparable<E>> boolean isSorted(E[] data) {
+    public static <E extends Comparable<E>> boolean isSorted(E[] data) {
         for (int i = 1; i < data.length; i++) {
             if (data[i - 1].compareTo(data[i]) > 0) {
                 throw new RuntimeException("sorted failed");
@@ -47,11 +51,19 @@ public class SortUtil {
     }
 
 
-    public static Integer[] generateArray(int size, int max) {
+    public static Integer[] generateRandomArray(int size, int max) {
         Integer[] data = new Integer[size];
         Random random = new Random();
         for (int i = 0; i < data.length; i++) {
             data[i] = random.nextInt(max);
+        }
+        return data;
+    }
+
+    public static Integer[] generateOrderedArray(int size) {
+        Integer[] data = new Integer[size];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = i;
         }
         return data;
     }

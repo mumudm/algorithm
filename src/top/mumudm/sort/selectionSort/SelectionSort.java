@@ -16,7 +16,7 @@ import top.mumudm.sort.util.SortUtil;
 public class SelectionSort {
 
     public static void main(String[] args) {
-        Integer[] array = SortUtil.generateArray(50000, 10000);
+        Integer[] array = SortUtil.generateRandomArray(50000, 10000);
         SortUtil.sort(array);
     }
 
