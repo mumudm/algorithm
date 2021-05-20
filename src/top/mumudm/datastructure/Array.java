@@ -1,4 +1,4 @@
-package top.mumudm.datastruce;
+package top.mumudm.datastructure;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -114,8 +114,25 @@ public class Array<E> {
      */
     public E get(int index) {
         checkIndex(index);
-
         return data[index];
+    }
+
+    /**
+     * 获取最后一位的元素
+     *
+     * @return {@link E}
+     */
+    public E getLast() {
+        return get(size -1);
+    }
+
+    /**
+     * 获取第一位元素
+     *
+     * @return {@link E}
+     */
+    public E getFirst() {
+        return get(0);
     }
 
     /**
@@ -124,7 +141,7 @@ public class Array<E> {
      * @param e e
      * @return int
      */
-    public int getIndex(E e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
             if(Objects.equals(data[i], e)){
                 return i;
@@ -161,7 +178,7 @@ public class Array<E> {
      * @return int
      */
     public int removeElement(E e){
-        int index = getIndex(e);
+        int index = find(e);
         if(index == -1){
             return index;
         }
@@ -176,12 +193,32 @@ public class Array<E> {
      * @return boolean
      */
     public boolean contains(E e){
-        int index = getIndex(e);
+        int index = find(e);
         return index != -1;
     }
 
+    /**
+     * 清空数组元素
+     */
+    public void clear(){
+        for (int i = 0; i < size; i++) {
+            data[i] = null;
+        }
+        size = 0;
+    }
+
+    /**
+     * 判断数组是否为空
+     *
+     * @return boolean
+     */
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
+
     public static void main(String[] args) {
-        Array<Object> array = new Array<>();
+        Array<Integer> array = new Array<>();
         array.add(1);
         array.add(2);
         array.add(3);
@@ -189,7 +226,8 @@ public class Array<E> {
         array.remove(1);
         array.remove(0);
         System.out.println(array);
-        array.remove(new Integer(3));
+        System.out.println(array.find(2));
+        array.removeElement(2);
 
         System.out.println(array);
     }
@@ -223,4 +261,21 @@ public class Array<E> {
         return sb.toString();
     }
 
+    /**
+     * remove first element
+     *
+     * @return {@link E}
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * remove last element
+     *
+     * @return {@link E}
+     */
+    public E removeLast() {
+        return remove(size - 1);
+    }
 }
