@@ -3,7 +3,7 @@
                          
 ## 数据结构
 
-1. [自定义数组](https://github.com/mumudm/algorithm/blob/master/src/top/mumudm/datastruce/Array.java)
+1. [自定义数组](https://github.com/mumudm/algorithm/blob/master/src/top/mumudm/datastructure/array/Array.java)
 
 
 ## 排序算法

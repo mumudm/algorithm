@@ -1,4 +1,6 @@
-package top.mumudm.datastructure;
+package top.mumudm.datastructure.stack;
+
+import top.mumudm.datastructure.array.Array;
 
 /**
  * 堆栈

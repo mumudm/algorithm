@@ -1,4 +1,4 @@
-package top.mumudm.datastructure;
+package top.mumudm.datastructure.array;
 
 import java.math.BigDecimal;
 import java.util.Objects;
