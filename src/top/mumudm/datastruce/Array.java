@@ -46,7 +46,13 @@ public class Array<E> {
         return size;
     }
 
-    public void add(int index, E e) {                               
+    /**
+     * 在指定位置添加元素
+     *
+     * @param index 索引下标
+     * @param e     待添加元素
+     */
+    public void add(int index, E e) {
         checkIndex(index);
         if (size == data.length) {
             reSize(BigDecimal.valueOf(Math.ceil(1.5 * data.length)).intValue());
@@ -73,24 +79,51 @@ public class Array<E> {
         }
     }
 
+    /**
+     * 在数组第一位添加
+     *
+     * @param e e
+     */
     public void addFirst(E e) {
         add(0, e);
     }
 
+    /**
+     * 在数组最后一位添加
+     *
+     * @param e e
+     */
     public void addLast(E e) {
         add(size, e);
     }
 
+    /**
+     * 在数组最后一位添加
+     *
+     * @param e e
+     */
     public void add(E e) {
         addLast(e);
     }
 
+    /**
+     * 获取指定索引位置的元素
+     *
+     * @param index 指数
+     * @return {@link E}
+     */
     public E get(int index) {
         checkIndex(index);
 
         return data[index];
     }
 
+    /**
+     * 获取指定元素在数组中的索引位置
+     *
+     * @param e e
+     * @return int
+     */
     public int getIndex(E e) {
         for (int i = 0; i < size; i++) {
             if(Objects.equals(data[i], e)){
@@ -100,6 +133,12 @@ public class Array<E> {
         return -1;
     }
 
+    /**
+     * 删除指定位置的数据
+     *
+     * @param index 索引下标
+     * @return {@link E}
+     */
     public E remove(int index) {
         E e = get(index);
 
@@ -130,6 +169,17 @@ public class Array<E> {
         return index;
     }
 
+    /**
+     * 确定数组中是否包含指定元素
+     *
+     * @param e e
+     * @return boolean
+     */
+    public boolean contains(E e){
+        int index = getIndex(e);
+        return index != -1;
+    }
+
     public static void main(String[] args) {
         Array<Object> array = new Array<>();
         array.add(1);
@@ -145,6 +195,11 @@ public class Array<E> {
     }
 
 
+    /**
+     * 根据给定的大小修改数组的长度
+     *
+     * @param capacity 数组容量
+     */
     private void reSize(int capacity) {
         E[] newData = (E[]) new Object[capacity];
         // for (int i = 0; i < size; i++) {
