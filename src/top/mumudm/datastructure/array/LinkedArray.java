@@ -11,12 +11,20 @@ public class LinkedArray<E> {
     /**
      * 数据
      */
-    private Node dummyHead;
+    private final Node dummyHead;
 
     /**
      * 大小
      */
     private int size;
+
+    /**
+     * 清除数组所有元素
+     */
+    public void clear() {
+        dummyHead.next = null;
+        this.size = 0;
+    }
 
     /**
      * 节点
@@ -185,7 +193,7 @@ public class LinkedArray<E> {
             tmp = tmp.next;
         }
 
-        sb.append("null").append("]");
+        sb.append("]");
         return sb.toString();
     }
 
@@ -227,6 +235,8 @@ public class LinkedArray<E> {
         System.out.println("array = " + array);
         array.removeElement("A");
         System.out.println("array.removeElement(\"A\") = ");
+        System.out.println("array = " + array);
+        array.clear();
         System.out.println("array = " + array);
     }
 

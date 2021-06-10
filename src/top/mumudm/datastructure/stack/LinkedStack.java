@@ -1,6 +1,6 @@
 package top.mumudm.datastructure.stack;
 
-import top.mumudm.datastructure.array.Array;
+import top.mumudm.datastructure.array.LinkedArray;
 
 /**
  * 堆栈
@@ -10,19 +10,16 @@ import top.mumudm.datastructure.array.Array;
  * 获取第一个元素叫做 peek()
  *
  * @author mumu
- * @date 2021-5-20 10:00
+ * @date 2021-6-10 11:18
  */
-public class ArrayStack<E> implements Stack<E> {
+public class LinkedStack<E> implements Stack<E> {
 
-    private Array<E> data;
+    private LinkedArray<E> data;
 
-    public ArrayStack() {
-        data = new Array<E>();
+    public LinkedStack() {
+        data = new LinkedArray<E>();
     }
 
-    public ArrayStack(int capacity) {
-        data = new Array<E>(capacity);
-    }
 
     /**
      * 获取栈的大小
@@ -58,7 +55,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public E peek() {
-        return data.getLast();
+        return data.getFirst();
     }
 
     /**
@@ -68,7 +65,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public void push(E e) {
-        data.addLast(e);
+        data.addFirst(e);
     }
 
     /**
@@ -78,26 +75,26 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public E pop() {
-        return data.removeLast();
+        return data.removeFirst();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Stack ").append(" [");
+        sb.append("Stack tail").append(" [");
         for (int i = 0; i < data.getSize(); i++) {
             sb.append(data.get(i));
             if (data.getSize() - 1 != i) {
                 sb.append(", ");
             }
         }
-        sb.append("] tail");
+        sb.append("]");
         return sb.toString();
     }
 
 
     public static void main(String[] args) {
-        ArrayStack<Object> stack = new ArrayStack<>();
+        Stack<Object> stack = new LinkedStack<>();
         stack.push(1);
         stack.push(5);
         stack.push(6);
@@ -110,5 +107,4 @@ public class ArrayStack<E> implements Stack<E> {
 
         System.out.println(stack);
     }
-
 }
